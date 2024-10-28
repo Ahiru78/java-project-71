@@ -8,4 +8,6 @@ build:
 	./gradlew build
 	./gradlew checkstyleMain
 	./gradlew checkstyleTest
+report:	
+	./gradlew jacocoTestReport
 .PHONY: build

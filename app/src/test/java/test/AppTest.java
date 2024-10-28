@@ -10,7 +10,7 @@ class AppTest {
     final String path1 = "src/test/resources/file1.json";
     final String path2 = "src/test/resources/file2.json";
     final String pathExp = "src/test/resources/expected.txt";
-    
+
     @Test
     void testCompareFlat() throws Exception {
         var expectedPath = Paths.get(pathExp).toAbsolutePath().normalize();
