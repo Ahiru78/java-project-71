@@ -1,5 +1,4 @@
 plugins {
-    id("java")
     application
     checkstyle
 	jacoco
@@ -18,6 +17,9 @@ dependencies {
     implementation("info.picocli:picocli:4.7.6")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.0.1")
     testImplementation("org.hamcrest:java-hamcrest:2.0.0.0")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.18.0")
+    implementation("org.apache.commons:commons-lang3:3.17.0")
+
 }
 
 tasks.test {
