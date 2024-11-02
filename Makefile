@@ -1,3 +1,5 @@
+run:
+	 make -C app run
 lint:
 	 make -C app lint
 build:
