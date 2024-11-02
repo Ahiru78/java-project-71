@@ -11,6 +11,10 @@ public class Differ {
         return Formatter.pick(format).format(diffValues);
     }
 
+    public static String generate(String filepath1, String filepath2) throws Exception {
+        return generate(filepath1, filepath1, "json");
+    }
+
     public static TreeMap<String, DiffValues> diff(String filepath1, String filepath2) throws Exception {
         final var map1 = Utils.getData(filepath1);
         final var map2 = Utils.getData(filepath2);
