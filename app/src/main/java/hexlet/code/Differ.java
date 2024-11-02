@@ -19,6 +19,10 @@ public class Differ {
         final var map1 = Utils.getData(filepath1);
         final var map2 = Utils.getData(filepath2);
         final var states = new String[]{"add", "delete", "change", "equal"};
+        final int addIndex = 0;
+        final int delIndex = 1;
+        final int chIndex = 2;
+        final int eqIndex = 3;
         var keys = new TreeMap<String, Object>(String.CASE_INSENSITIVE_ORDER);
         keys.putAll(map1);
         keys.putAll(map2);
@@ -28,19 +32,19 @@ public class Differ {
             Object value1 = map1.get(key);
             Object value2 = map2.get(key);
             if (value1 == null && !map1.containsKey(key)) {
-                var diffValue = new DiffValues(states[0], null, value2);
+                var diffValue = new DiffValues(states[addIndex], null, value2);
                 result.put(key, diffValue);
                 // Added value
             } else if (value2 == null && !map2.containsKey(key)) {
-                var diffValue = new DiffValues(states[1], value1, null);
+                var diffValue = new DiffValues(states[delIndex], value1, null);
                 result.put(key, diffValue);
                 // Deleted value
             } else if (!Objects.equals(value1, value2)) {
-                var diffValue = new DiffValues(states[2], value1, value2);
+                var diffValue = new DiffValues(states[chIndex], value1, value2);
                 result.put(key, diffValue);
                 // Changed value
             } else if (Objects.equals(value1, value2)) {
-                var diffValue = new DiffValues(states[3], value1, value2);
+                var diffValue = new DiffValues(states[eqIndex], value1, value2);
                 result.put(key, diffValue);
                 // Unchanged value
             } else {
