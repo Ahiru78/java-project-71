@@ -12,7 +12,7 @@ public class Differ {
     }
 
     public static String generate(String filepath1, String filepath2) throws Exception {
-        return generate(filepath1, filepath1, "stylish");
+        return generate(filepath1, filepath2, "stylish");
     }
 
     public static TreeMap<String, DiffValues> diff(String filepath1, String filepath2) throws Exception {
