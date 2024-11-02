@@ -39,10 +39,12 @@ public class Differ {
                 var diffValue = new DiffValues(states[2], value1, value2);
                 result.put(key, diffValue);
                 // Changed value
-            } else {
+            } else if (Objects.equals(value1, value2)) {
                 var diffValue = new DiffValues(states[3], value1, value2);
                 result.put(key, diffValue);
                 // Unchanged value
+            } else {
+                throw new RuntimeException("Something went wrong");
             }
         }
         return result;
