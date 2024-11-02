@@ -7,15 +7,15 @@ import java.nio.file.Files;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AppTest {
-    final String pathJSON1 = "src/test/resources/file1.json";
-    final String pathJSON2 = "src/test/resources/file2.json";
-    final String pathYAML1 = "src/test/resources/file1.yaml";
-    final String pathYAML2 = "src/test/resources/file2.yaml";
-    final String pathYML1 = "src/test/resources/file1.yml";
-    final String pathYML2 = "src/test/resources/file2.yml";
-    final String expStylish = "src/test/resources/StylishExpected.txt";
-    final String expPlain = "src/test/resources/PlainExpected.txt";
-    final String expJson = "src/test/resources/JsonExpected.txt";
+    private final String pathJSON1 = "src/test/resources/file1.json";
+    private final String pathJSON2 = "src/test/resources/file2.json";
+    private final String pathYAML1 = "src/test/resources/file1.yaml";
+    private final String pathYAML2 = "src/test/resources/file2.yaml";
+    private final String pathYML1 = "src/test/resources/file1.yml";
+    private final String pathYML2 = "src/test/resources/file2.yml";
+    private final String expStylish = "src/test/resources/StylishExpected.txt";
+    private final String expPlain = "src/test/resources/PlainExpected.txt";
+    private final String expJson = "src/test/resources/JsonExpected.txt";
 
     @Test
     void testCompareJSON() throws Exception {

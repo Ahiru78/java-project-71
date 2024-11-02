@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Json implements Format {
-    public String format(TreeMap<String, DiffValues> diffMap) throws JsonProcessingException {
+    public final String format(TreeMap<String, DiffValues> diffMap) throws JsonProcessingException {
         String result = "";
         for (Map.Entry<String, DiffValues> entry: diffMap.entrySet()) {
             String key = entry.getKey();

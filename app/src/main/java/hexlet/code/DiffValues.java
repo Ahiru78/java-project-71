@@ -2,9 +2,9 @@ package hexlet.code;
 
 public class DiffValues {
     private String key;
-    private String state;
-    private Object value1;
-    private Object value2;
+    private final String state;
+    private final Object value1;
+    private final Object value2;
 
     public DiffValues(String state, Object value1, Object value2) {
         this.state = state;
@@ -12,23 +12,23 @@ public class DiffValues {
         this.value2 = value2;
     }
 
-    public Object getKey() {
+    public final Object getKey() {
         return key;
     }
 
-    public String getState() {
+    public final String getState() {
         return state;
     }
 
-    public Object getValue1() {
+    public final Object getValue1() {
         return value1;
     }
 
-    public Object getValue2() {
+    public final Object getValue2() {
         return value2;
     }
 
-    public void setKey(String key) {
+    public final void setKey(String key) {
         this.key = key;
     }
 }

@@ -7,7 +7,7 @@ import java.util.TreeMap;
 public class Stylish implements Format {
     static final String TEXT = "\n  %s %s: %s";
 
-    public String format(TreeMap<String, DiffValues> diffMap) {
+    public final String format(TreeMap<String, DiffValues> diffMap) {
         String result = "";
         for (Map.Entry<String, DiffValues> entry: diffMap.entrySet()) {
             String key = entry.getKey();

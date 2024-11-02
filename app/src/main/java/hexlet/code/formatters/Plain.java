@@ -10,7 +10,7 @@ public class Plain implements Format {
     static final String TEXTRMV = "\nProperty '%s' was removed";
     static final String TEXTUPD = "\nProperty '%s' was updated. From %s to %s";
 
-    public String format(TreeMap<String, DiffValues> diffMap) {
+    public final String format(TreeMap<String, DiffValues> diffMap) {
         String result = "";
         for (Map.Entry<String, DiffValues> entry: diffMap.entrySet()) {
             String key = entry.getKey();
