@@ -1,59 +1,75 @@
 package test;
 
 import hexlet.code.Differ;
+import hexlet.code.Utils;
 import org.junit.jupiter.api.Test;
-import java.nio.file.Paths;
-import java.nio.file.Files;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AppTest {
-    private final String pathJSON1 = "src/test/resources/file1.json";
-    private final String pathJSON2 = "src/test/resources/file2.json";
-    private final String pathYAML1 = "src/test/resources/file1.yaml";
-    private final String pathYAML2 = "src/test/resources/file2.yaml";
-    private final String pathYML1 = "src/test/resources/file1.yml";
-    private final String pathYML2 = "src/test/resources/file2.yml";
-    private final String expStylish = "src/test/resources/StylishExpected.txt";
-    private final String expPlain = "src/test/resources/PlainExpected.txt";
-    private final String expJson = "src/test/resources/JsonExpected.txt";
+    private final String path = "src/test/resources/";
+    private final String pathJSON1 = (path + "file1.json");
+    private final String pathJSON2 = (path + "file2.json");
+//  private final String pathYAML1 = (path + "file1.yaml");
+//  private final String pathYAML2 = (path + "file2.yaml");
+    private final String pathYML1 = (path + "file1.yml");
+    private final String pathYML2 = (path + "file2.yml");
+    private final String expStylish =  (path + "StylishExpected.txt");
+    private final String expPlain = (path + "PlainExpected.txt");
+    private final String expJson = (path + "JsonExpected.txt");
 
     @Test
-    void testCompareJSON() throws Exception {
-        var expectedPath = Paths.get(expStylish).toAbsolutePath().normalize();
-        String expected = Files.readString(expectedPath);
+    void testGenerateJson() throws Exception {
+        String expected = Utils.readFile(expStylish);
+        String actual = Differ.generate(pathJSON1, pathJSON2);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testGenerateYml() throws Exception {
+        String expected = Utils.readFile(expStylish);
+        String actual = Differ.generate(pathYML1, pathYML2);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testStylishJson() throws Exception {
+        String expected = Utils.readFile(expStylish);
         String actual = Differ.generate(pathJSON1, pathJSON2, "stylish");
         assertEquals(expected, actual);
     }
 
     @Test
-    void testCompareYML() throws Exception {
-        var expectedPath = Paths.get(expStylish).toAbsolutePath().normalize();
-        String expected = Files.readString(expectedPath);
+    void testStylishYml() throws Exception {
+        String expected = Utils.readFile(expStylish);
         String actual = Differ.generate(pathYML1, pathYML2, "stylish");
         assertEquals(expected, actual);
     }
 
     @Test
-    void testCompareYAML() throws Exception {
-        var expectedPath = Paths.get(expStylish).toAbsolutePath().normalize();
-        String expected = Files.readString(expectedPath);
-        String actual = Differ.generate(pathYAML1, pathYAML2, "stylish");
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void testPlain() throws Exception {
-        var expectedPath = Paths.get(expPlain).toAbsolutePath().normalize();
-        String expected = Files.readString(expectedPath);
+    void testPlainJson() throws Exception {
+        String expected = Utils.readFile(expPlain);
         String actual = Differ.generate(pathJSON1, pathJSON2, "plain");
         assertEquals(expected, actual);
     }
 
     @Test
-    void testJson() throws Exception {
-        var expectedPath = Paths.get(expJson).toAbsolutePath().normalize();
-        String expected = Files.readString(expectedPath);
+    void testPlainYml() throws Exception {
+        String expected = Utils.readFile(expPlain);
+        String actual = Differ.generate(pathYML1, pathYML2, "plain");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testJsonJson() throws Exception {
+        String expected = Utils.readFile(expJson);
         String actual = Differ.generate(pathJSON1, pathJSON2, "json");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testJsonYml() throws Exception {
+        String expected = Utils.readFile(expJson);
+        String actual = Differ.generate(pathYML1, pathYML2, "json");
         assertEquals(expected, actual);
     }
 }

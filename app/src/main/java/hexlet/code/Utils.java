@@ -1,10 +1,13 @@
 package hexlet.code;
 import hexlet.code.parsers.ParseFactory;
+
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 import org.apache.commons.lang3.ClassUtils;
+
 
 public class Utils {
     public static Map<String, Object> getData(String path) throws Exception {
@@ -20,6 +23,11 @@ public class Utils {
         } else {
             throw new Exception("File extension not found");
         }
+    }
+
+    public static String readFile(String path) throws IOException {
+        var normPath = Paths.get(path).toAbsolutePath().normalize();
+        return Files.readString(normPath);
     }
 
     public static String defType(Object value) {
