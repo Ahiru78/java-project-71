@@ -15,7 +15,6 @@ public class Tree {
     public static List<HashMap<String, Object>> diff(String filepath1, String filepath2) throws Exception {
         final var map1 = getData(filepath1);
         final var map2 = getData(filepath2);
-        final var state = new String[]{"add", "delete", "update", "equal"};
         var keys = findKeys(map1, map2);
         var result = new ArrayList<HashMap<String, Object>>();
         for (String key : keys) {
@@ -25,23 +24,23 @@ public class Tree {
             if (!map1.containsKey(key) && value1 == null) {
                 // Added value
                 diffMap.put("key", key);
-                diffMap.put("state", state[0]);
+                diffMap.put("state", "add");
                 diffMap.put("valueNew", value2);
             } else if (!map2.containsKey(key) && value2 == null) {
                 // Deleted value
                 diffMap.put("key", key);
-                diffMap.put("state", state[1]);
+                diffMap.put("state", "delete");
                 diffMap.put("value", value1);
             } else if (!Objects.equals(value1, value2)) {
                 // Changed value
                 diffMap.put("key", key);
-                diffMap.put("state", state[2]);
+                diffMap.put("state", "update");
                 diffMap.put("value", value1);
                 diffMap.put("valueNew", value2);
             } else if (Objects.equals(value1, value2)) {
                 // Unchanged value
                 diffMap.put("key", key);
-                diffMap.put("state", state[3]);
+                diffMap.put("state", "equal");
                 diffMap.put("value", value1);
             }
             result.add(diffMap);
